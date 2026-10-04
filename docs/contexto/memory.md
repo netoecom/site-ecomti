@@ -31,4 +31,10 @@ Data: 04 de outubro de 2026.
 Autor: Antigravity Assistant.
 Escopo: Ajustes de contato, simplificação de indicadores e remoção de cases de sucesso.
 Decisões e Entregas: Telefone de atendimento atualizado para o número trinta e oito nove dez zero dois trinta e sete trinta em todos os pontos do site, incluindo cartão de contato, rodapé, banner de chamada para ação e termos legais. Indicadores de projetos e provas sociais infladas foram reduzidos no cabeçalho mantendo com destaque os anos de experiência da empresa. Removidas integralmente as seções de casos de sucesso de TI Estratégica, Automação com Inteligência Artificial e Marketing Digital, além do bloco de métricas de eficiência.
-Próximos Passos: Publicar alterações via push para acionar auto-deploy no Coolify e validar visualmente em produção.
+Próximos Passos: Implementar cache busting de ativos e atualizar o service worker.
+
+Data: 04 de outubro de 2026.
+Autor: Antigravity Assistant.
+Escopo: Implementação de cache busting de bundle e atualização de Service Worker v2.
+Decisões e Entregas: Renomeado o arquivo compilado principal para index-ecomti-v2.js com o objetivo de invalidar caches residuais de navegadores e proxys de borda. Atualizado o Service Worker para a versão ecomti-cache-v2 com exclusão automática da versão anterior e recarregamento proativo da página. Adicionadas diretivas explícitas de não armazenamento em cache para o documento index.html no servidor web Nginx, garantindo que qualquer alteração subsequente seja refletida de forma imediata aos visitantes.
+Próximos Passos: Confirmar visualização em tempo real pelo usuário.

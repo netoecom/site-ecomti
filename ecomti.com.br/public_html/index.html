@@ -31,25 +31,36 @@
     <meta name="twitter:description" content="Especialistas em TI Estratégica, Automação com IA e Marketing Digital para empresas de varejo e construção." />
     <meta name="twitter:image" content="https://ecomti.com.br/assets/favicon.svg" />
 
-    <!-- Assets da Aplicação -->
-    <script type="module" crossorigin src="/assets/index-kzACFt43.js"></script>
+    <!-- Assets da Aplicação com Cache Busting -->
+    <script type="module" crossorigin src="/assets/index-ecomti-v2.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Cli4X1EU.css">
   </head>
 
   <body>
     <div id="root"></div>
 
-    <!-- Registro Seguro do Service Worker (PWA) -->
+    <!-- Registro Seguro do Service Worker (PWA com Auto-Update) -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('[PWA] Service Worker registrado com sucesso no escopo:', registration.scope);
-            })
-            .catch((error) => {
-              console.error('[PWA] Erro ao registrar o Service Worker:', error);
-            });
+          navigator.serviceWorker.register('/sw.js').then((registration) => {
+            console.log('[PWA] Service Worker registrado no escopo:', registration.scope);
+
+            // Verifica se há uma nova versão em background
+            registration.onupdatefound = () => {
+              const installingWorker = registration.installing;
+              if (installingWorker) {
+                installingWorker.onstatechange = () => {
+                  if (installingWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('[PWA] Nova versão detectada. Atualizando página...');
+                    window.location.reload();
+                  }
+                };
+              }
+            };
+          }).catch((error) => {
+            console.error('[PWA] Erro ao registrar Service Worker:', error);
+          });
         });
       }
     </script>

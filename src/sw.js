@@ -1,9 +1,9 @@
 /**
- * ECOM TI - Service Worker (PWA Offline-First)
+ * ECOM TI - Service Worker (PWA Offline-First) v2
  * Gerencia cache de shell e contingência offline para aplicação SPA.
  */
 
-const CACHE_NAME = 'ecomti-cache-v1';
+const CACHE_NAME = 'ecomti-cache-v2';
 const PRECACHE_RESOURCES = [
   '/',
   '/index.html',
@@ -14,17 +14,17 @@ const PRECACHE_RESOURCES = [
   '/robots.txt',
   '/assets/favicon.svg',
   '/assets/index-Cli4X1EU.css',
-  '/assets/index-kzACFt43.js'
+  '/assets/index-ecomti-v2.js'
 ];
 
 // Instalação do Service Worker e pré-cache dos recursos essenciais
 self.addEventListener('install', (event) => {
+  console.log('[SW v2] Instalando nova versão...');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('[SW] Pré-carregando recursos críticos no cache');
         return cache.addAll(PRECACHE_RESOURCES).catch((err) => {
-          console.warn('[SW] Aviso ao pré-carregar recursos parciais:', err);
+          console.warn('[SW v2] Aviso ao pré-carregar recursos parciais:', err);
         });
       })
       .then(() => self.skipWaiting())
@@ -33,13 +33,14 @@ self.addEventListener('install', (event) => {
 
 // Ativação do Service Worker e limpeza de caches antigos
 self.addEventListener('activate', (event) => {
+  console.log('[SW v2] Ativando e limpando caches anteriores...');
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames
           .filter((name) => name !== CACHE_NAME)
           .map((name) => {
-            console.log('[SW] Removendo cache legado:', name);
+            console.log('[SW v2] Excluindo cache antigo:', name);
             return caches.delete(name);
           })
       );
@@ -47,24 +48,20 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Estratégia de Fetch:
-// 1. Navegação (HTML): Network-first com fallback para o cache (offline)
-// 2. Recursos estáticos (assets, imagens, css, js): Cache-first / Stale-While-Revalidate
+// Estratégia de Fetch
 self.addEventListener('fetch', (event) => {
   const request = event.request;
   const url = new URL(request.url);
 
-  // Apenas intercepta requisições HTTP/HTTPS no mesmo escopo
   if (request.method !== 'GET' || !url.protocol.startsWith('http')) {
     return;
   }
 
-  // Requisição de navegação principal (página HTML)
+  // Navegação: Network-first com fallback para o cache
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
-          // Atualiza o cache da raiz se online
           if (networkResponse && networkResponse.status === 200) {
             const responseClone = networkResponse.clone();
             caches.open(CACHE_NAME).then((cache) => cache.put(request, responseClone));
@@ -72,9 +69,8 @@ self.addEventListener('fetch', (event) => {
           return networkResponse;
         })
         .catch(async () => {
-          // Fallback offline para a página principal
           const cachedResponse = await caches.match('/index.html') || await caches.match('/');
-          return cachedResponse || new Response('<h1>Você está offline</h1><p>Conecte-se à internet para acessar o site da ECOM TI.</p>', {
+          return cachedResponse || new Response('<h1>Você está offline</h1>', {
             headers: { 'Content-Type': 'text/html; charset=utf-8' }
           });
         })
@@ -82,7 +78,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Recursos estáticos (CSS, JS, imagens, fontes)
+  // Assets estáticos
   if (
     url.pathname.startsWith('/assets/') ||
     url.pathname.startsWith('/lovable-uploads/') ||
@@ -91,16 +87,14 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       caches.match(request).then((cachedResponse) => {
         if (cachedResponse) {
-          // Busca em background para atualizar o cache (Stale-While-Revalidate)
           fetch(request).then((networkResponse) => {
             if (networkResponse && networkResponse.status === 200) {
               caches.open(CACHE_NAME).then((cache) => cache.put(request, networkResponse));
             }
-          }).catch(() => {/* Silencioso se offline */});
+          }).catch(() => {});
           return cachedResponse;
         }
 
-        // Se não estiver em cache, busca na rede e guarda
         return fetch(request).then((networkResponse) => {
           if (networkResponse && networkResponse.status === 200) {
             const responseClone = networkResponse.clone();
@@ -113,7 +107,6 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Demais requisições: padrão de rede com fallback em cache
   event.respondWith(
     fetch(request).catch(() => caches.match(request))
   );
