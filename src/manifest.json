@@ -1,0 +1,31 @@
+{
+  "name": "ECOM TI - Tecnologia e Inovação",
+  "short_name": "ECOM TI",
+  "description": "Especialistas em TI Estratégica, Automação com IA e Marketing Digital para empresas de varejo e construção.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0e131a",
+  "theme_color": "#4ba84d",
+  "categories": ["business", "productivity", "utilities"],
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

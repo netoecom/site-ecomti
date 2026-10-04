@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>ECOM TI - Tecnologia e Inovação para o seu Negócio Crescer</title>
+    <meta name="description" content="Especialistas em TI Estratégica, Automação com IA e Marketing Digital para empresas de varejo e construção. Transforme seu negócio com soluções inovadoras." />
+    <meta name="author" content="ECOM TI" />
+
+    <!-- PWA & Mobile Capabilities -->
+    <meta name="theme-color" content="#4ba84d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="ECOM TI" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Open Graph / Redes Sociais -->
+    <meta property="og:title" content="ECOM TI - Tecnologia e Inovação para o seu Negócio Crescer" />
+    <meta property="og:description" content="Especialistas em TI Estratégica, Automação com IA e Marketing Digital para empresas de varejo e construção." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ecomti.com.br/" />
+    <meta property="og:image" content="https://ecomti.com.br/assets/favicon.svg" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ECOM TI - Tecnologia e Inovação para o seu Negócio Crescer" />
+    <meta name="twitter:description" content="Especialistas em TI Estratégica, Automação com IA e Marketing Digital para empresas de varejo e construção." />
+    <meta name="twitter:image" content="https://ecomti.com.br/assets/favicon.svg" />
+
+    <!-- Assets da Aplicação -->
+    <script type="module" crossorigin src="/assets/index-kzACFt43.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Cli4X1EU.css">
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- Registro Seguro do Service Worker (PWA) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('[PWA] Service Worker registrado com sucesso no escopo:', registration.scope);
+            })
+            .catch((error) => {
+              console.error('[PWA] Erro ao registrar o Service Worker:', error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>

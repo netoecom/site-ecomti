@@ -1,0 +1,27 @@
+{
+  "name": "site-ecomti",
+  "version": "1.0.0",
+  "description": "Website institucional ECOM TI - Tecnologia e Inovação",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "serve -s src -l 3000",
+    "build": "node scripts/build.mjs",
+    "preview": "serve -s dist -l 8080",
+    "typecheck": "node scripts/typecheck.mjs",
+    "lint": "node scripts/lint.mjs"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  },
+  "keywords": [
+    "ecomti",
+    "pwa",
+    "spa",
+    "docker",
+    "coolify",
+    "nginx"
+  ],
+  "author": "ECOM TI <contato@ecomti.com.br>",
+  "license": "UNLICENSED"
+}
