@@ -38,3 +38,9 @@ Autor: Antigravity Assistant.
 Escopo: Implementação de cache busting de bundle e atualização de Service Worker v2.
 Decisões e Entregas: Renomeado o arquivo compilado principal para index-ecomti-v2.js com o objetivo de invalidar caches residuais de navegadores e proxys de borda. Atualizado o Service Worker para a versão ecomti-cache-v2 com exclusão automática da versão anterior e recarregamento proativo da página. Adicionadas diretivas explícitas de não armazenamento em cache para o documento index.html no servidor web Nginx, garantindo que qualquer alteração subsequente seja refletida de forma imediata aos visitantes.
 Próximos Passos: Confirmar visualização em tempo real pelo usuário.
+
+Data: 04 de outubro de 2026.
+Autor: Antigravity Assistant.
+Escopo: Ajuste dos indicadores do topo para valores realistas e cache busting v3.
+Decisões e Entregas: Reconfigurados os três indicadores do topo da página com números realistas alinhados com o usuário sendo vinte mais anos de experiência, cinquenta mais projetos entregues e noventa e cinco porcento de clientes satisfeitos. Mantida a remoção do bloco de métricas artificiais de marketing. Atualizado o arquivo de script para a versão index-ecomti-v3.js e o Service Worker para ecomti-cache-v3 para garantir entrega imediata nos navegadores sem retenção em cache.
+Próximos Passos: Validar a exibição da página em produção pelo usuário.

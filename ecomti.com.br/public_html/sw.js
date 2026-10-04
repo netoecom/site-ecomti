@@ -3,7 +3,7 @@
  * Gerencia cache de shell e contingência offline para aplicação SPA.
  */
 
-const CACHE_NAME = 'ecomti-cache-v2';
+const CACHE_NAME = 'ecomti-cache-v3';
 const PRECACHE_RESOURCES = [
   '/',
   '/index.html',
@@ -14,7 +14,7 @@ const PRECACHE_RESOURCES = [
   '/robots.txt',
   '/assets/favicon.svg',
   '/assets/index-Cli4X1EU.css',
-  '/assets/index-ecomti-v2.js'
+  '/assets/index-ecomti-v3.js'
 ];
 
 // Instalação do Service Worker e pré-cache dos recursos essenciais
