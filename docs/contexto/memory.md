@@ -25,4 +25,10 @@ Data: 04 de outubro de 2026.
 Autor: Antigravity Assistant.
 Escopo: Automação integral de infraestrutura em nuvem, Cloudflare, GitHub e Coolify.
 Decisões e Entregas: Repositório netoecom/site-ecomti criado e publicado no GitHub via API sem necessidade de ações manuais. Registro de DNS Tipo A atualizado na Cloudflare apontando para o IP 212.85.20.37 da VPS do Coolify. Aplicação criada no Coolify no projeto ECOMTI e ambiente production com Dockerfile multi-stage e porta 80. Domínios ecomti.com.br e www.ecomti.com.br associados com sucesso. Webhook automático de integração contínua configurado entre GitHub e Coolify. Deploy realizado e validado com sucesso em produção retornando código 200 OK.
-Próximos Passos: Seguir para os ajustes visuais e de conteúdo solicitados pelo cliente na interface.
+Próximos Passos: Executar os ajustes de conteúdo solicitados pelo cliente.
+
+Data: 04 de outubro de 2026.
+Autor: Antigravity Assistant.
+Escopo: Ajustes de contato, simplificação de indicadores e remoção de cases de sucesso.
+Decisões e Entregas: Telefone de atendimento atualizado para o número trinta e oito nove dez zero dois trinta e sete trinta em todos os pontos do site, incluindo cartão de contato, rodapé, banner de chamada para ação e termos legais. Indicadores de projetos e provas sociais infladas foram reduzidos no cabeçalho mantendo com destaque os anos de experiência da empresa. Removidas integralmente as seções de casos de sucesso de TI Estratégica, Automação com Inteligência Artificial e Marketing Digital, além do bloco de métricas de eficiência.
+Próximos Passos: Publicar alterações via push para acionar auto-deploy no Coolify e validar visualmente em produção.
